@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructora Carmona | Arquitectura de Excelencia</title>
+    
+    <!-- Fuentes elegantes y distintivas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* 🎨 PALETA DE COLORES PROFESIONAL - Puedes ajustar según tu logo */
+            --primary-gold: #C9A961;
+            --primary-dark: #1A1A1A;
+            --primary-navy: #0F172A;
+            --accent-red: #B8860B;
+            --text-primary: #0A0A0A;
+            --text-secondary: #525252;
+            --text-light: #A3A3A3;
+            --bg-light: #FAFAFA;
+            --bg-white: #FFFFFF;
+            --border-subtle: #E5E5E5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============= NAVEGACIÓN ============= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ============= HERO SECTION ============= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            overflow: hidden;
+        }
+
+        /* Efecto de grid sutil en el fondo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(201, 169, 97, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 169, 97, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        /* 🔹 IMAGEN DE FONDO DEL HERO - Reemplaza 'hero-building.jpg' con tu imagen */
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background: url('hero-building.jpg') center/cover;
+            opacity: 0.15;
+            mix-blend-mode: luminosity;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: var(--primary-gold);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            border-radius: 50px;
+            background: rgba(201, 169, 97, 0.05);
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--bg-white);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
+            color: var(--primary-gold);
+            display: block;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #D4B76A;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--bg-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-gold);
+        }
+
+        /* ============= SECCIÓN DE ESTADÍSTICAS ============= */
+        .stats-section {
+            background: var(--bg-white);
+            padding: 5rem 3rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--primary-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        /* ============= SECCIÓN QUIÉNES SOMOS ============= */
+        .about-section {
+            padding: 8rem 3rem;
+            background: var(--bg-light);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .about-content h2 strong {
+            font-weight: 600;
+            color: var(--primary-gold);
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 600px;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 🔹 IMAGEN DEL EQUIPO - Reemplaza 'team-photo.jpg' */
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.3), transparent);
+        }
+
+        /* ============= SERVICIOS ============= */
+        .services-section {
+            padding: 8rem 3rem;
+            background: var(--bg-white);
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            color: var(--primary-gold);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title strong {
+            font-weight: 600;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 3rem 2.5rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--primary-gold);
+            transition: height 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-color: transparent;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            filter: grayscale(0%);
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* ============= PROYECTOS / PORTFOLIO ============= */
+        .portfolio-section {
+            padding: 8rem 3rem;
+            background: var(--primary-navy);
+            position: relative;
+        }
+
+        .portfolio-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-section .section-label {
+            color: var(--primary-gold);
+        }
+
+        .portfolio-section .section-title {
+            color: var(--bg-white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            position: relative;
+            height: 500px;
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* 🔹 IMÁGENES DE PROYECTOS - Reemplaza 'project-1.jpg', 'project-2.jpg', etc. */
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            transition: background 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.3));
+        }
+
+        .portfolio-overlay h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--bg-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* ============= TESTIMONIOS ============= */
+        .testimonials-section {
+            padding: 8rem 3rem;
+            background: var(--bg-light);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-left: 3px solid var(--primary-gold);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--bg-white);
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* ============= CERTIFICACIONES ============= */
+        .certifications-section {
+            padding: 8rem 3rem;
+            background: var(--bg-white);
+        }
+
+        .certifications-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .certification-item {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .certification-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .cert-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+        }
+
+        .cert-name {
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ============= CONTACTO ============= */
+        .contact-section {
+            padding: 8rem 3rem;
+            background: var(--primary-navy);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contact-info h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--bg-white);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h2 strong {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        .contact-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(201, 169, 97, 0.1);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h3 {
+            color: var(--bg-white);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item-content p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .contact-item-content a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--primary-gold);
+        }
+
+        .map-container {
+            border-radius: 2px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(100%) invert(92%) contrast(90%);
+        }
+
+        /* ============= FOOTER ============= */
+        footer {
+            background: #0A0A0A;
+            padding: 4rem 3rem 2rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--bg-white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-section h4 {
+            color: var(--bg-white);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* ============= BOTÓN WHATSAPP FLOTANTE ============= */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        /* ============= RESPONSIVE ============= */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 1.5rem 2rem;
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container,
+            .stats-section,
+            .services-section,
+            .portfolio-section,
+            .testimonials-section,
+            .certifications-section,
+            .contact-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .services-grid,
+            .portfolio-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animación de aparición al hacer scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============= NAVEGACIÓN ============= -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <!-- 🔹 NOMBRE DE LA EMPRESA -->
+            <a href="#" class="logo">Carmona <span>Constructora</span></a>
+            
+            <ul class="nav-links">
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============= HERO ============= -->
+    <section class="hero">
+        <!-- 🔹 OPCIONAL: Imagen de fondo del hero -->
+        <div class="hero-background"></div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- 🔹 ETIQUETA SUPERIOR - Ajusta según tu mensaje -->
+                <span class="hero-label">Desde 1985</span>
+                
+                <!-- 🔹 TÍTULO PRINCIPAL -->
+                <h1>
+                    Construyendo el futuro<br>
+                    <strong>con excelencia arquitectónica</strong>
+                </h1>
+                
+                <!-- 🔹 DESCRIPCIÓN -->
+                <p class="hero-description">
+                    Transformamos visiones en realidades arquitectónicas excepcionales. 
+                    Con más de tres décadas de experiencia, creamos espacios que inspiran 
+                    y perduran en el tiempo.
+                </p>
+                
+                <div class="cta-group">
+                    <!-- 🔹 LINK DE WHATSAPP - Cambia el número -->
+                    <a href="https://wa.me/59172657394" class="btn-primary">
+                        Solicitar Presupuesto →
+                    </a>
+                    <a href="#proyectos" class="btn-secondary">
+                        Ver Proyectos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= ESTADÍSTICAS ============= -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <!-- 🔹 AJUSTA LOS NÚMEROS SEGÚN TU EMPRESA -->
+            <div class="stat-item">
+                <div class="stat-number">38+</div>
+                <div class="stat-label">Años de experiencia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">250+</div>
+                <div class="stat-label">Proyectos completados</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Clientes satisfechos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">45</div>
+                <div class="stat-label">Profesionales</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= QUIÉNES SOMOS ============= -->
+    <section class="about-section" id="nosotros">
+        <div class="about-container">
+            <div class="about-content">
+                <!-- 🔹 TÍTULO DE LA SECCIÓN -->
+                <h2>
+                    Líderes en <strong>construcción<br>de prestigio</strong>
+                </h2>
+                
+                <!-- 🔹 DESCRIPCIÓN DE LA EMPRESA - Personaliza con tu historia real -->
+                <p class="about-description">
+                    Desde 1985, Constructora Carmona ha sido sinónimo de excelencia arquitectónica 
+                    y compromiso inquebrantable con la calidad. Fundada por el Ing. Roberto Carmona, 
+                    nuestra empresa ha evolucionado hasta convertirse en referente del sector 
+                    constructivo en Bolivia.
+                </p>
+                
+                <p class="about-description">
+                    Nuestro enfoque integra innovación tecnológica, sostenibilidad ambiental y 
+                    artesanía de primer nivel. Cada proyecto es una obra maestra única, diseñada 
+                    con precisión y ejecutada con pasión por un equipo de profesionales altamente 
+                    calificados.
+                </p>
+                
+                <p class="about-description">
+                    Creemos que la arquitectura va más allá de la construcción: es el arte de 
+                    crear espacios que elevan la experiencia humana y resisten el paso del tiempo.
+                </p>
+            </div>
+            
+            <div class="about-image">
+                <!-- 🔹 IMAGEN DEL EQUIPO O DE LA EMPRESA - Reemplaza 'team-carmona.jpg' -->
+                <img src="team-carmona.jpg" alt="Equipo Constructora Carmona">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= SERVICIOS ============= -->
+    <section class="services-section" id="servicios">
+        <div class="services-container">
+            <div class="section-header">
+                <div class="section-label">Nuestros Servicios</div>
+                <h2 class="section-title">Soluciones <strong>integrales</strong></h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- 🔹 PERSONALIZA CADA SERVICIO CON TU OFERTA REAL -->
+                <div class="service-card">
+                    <div class="service-icon">🏛️</div>
+                    <h3>Construcción Residencial de Lujo</h3>
+                    <p>
+                        Viviendas exclusivas diseñadas a medida, donde cada detalle refleja 
+                        sofisticación y confort. Desde villas contemporáneas hasta residencias 
+                        clásicas de alto nivel.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Edificaciones Corporativas</h3>
+                    <p>
+                        Desarrollos comerciales y corporativos que combinan funcionalidad, 
+                        estética moderna y eficiencia energética. Espacios que impulsan 
+                        el éxito empresarial.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Remodelación Premium</h3>
+                    <p>
+                        Transformación integral de espacios existentes. Renovamos con visión 
+                        contemporánea respetando la esencia arquitectónica original.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🌉</div>
+                    <h3>Infraestructura Civil</h3>
+                    <p>
+                        Proyectos de obra civil de gran envergadura. Puentes, carreteras y 
+                        estructuras que conectan comunidades con ingeniería de vanguardia.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Diseño Arquitectónico</h3>
+                    <p>
+                        Conceptualización y desarrollo de proyectos desde la visión inicial 
+                        hasta los planos ejecutivos. Arquitectura que cuenta historias.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">♻️</div>
+                    <h3>Construcción Sostenible</h3>
+                    <p>
+                        Edificaciones eco-eficientes con certificación LEED. Compromiso con 
+                        el medio ambiente sin sacrificar elegancia ni funcionalidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= PROYECTOS ============= -->
+    <section class="portfolio-section" id="proyectos">
+        <div class="portfolio-container">
+            <div class="section-header">
+                <div class="section-label">Portfolio</div>
+                <h2 class="section-title">Proyectos <strong>emblemáticos</strong></h2>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- 🔹 AGREGA TUS PROYECTOS REALES CON IMÁGENES -->
+                <div class="portfolio-card">
+                    <img src="residencia-alto-urus.jpg" alt="Residencia Alto Urus">
+                    <div class="portfolio-overlay">
+                        <h3>Residencia Alto Urus</h3>
+                        <p>Santa Cruz • 2024 • Residencial de lujo</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <img src="torre-corporativa-downtown.jpg" alt="Torre Corporativa Downtown">
+                    <div class="portfolio-overlay">
+                        <h3>Torre Corporativa Downtown</h3>
+                        <p>Santa Cruz • 2023 • 18 niveles • LEED Gold</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <img src="condominio-las-palmas.jpg" alt="Condominio Las Palmas">
+                    <div class="portfolio-overlay">
+                        <h3>Condominio Las Palmas</h3>
+                        <p>Warnes • 2023 • 45 unidades residenciales</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <img src="plaza-comercial-ventura.jpg" alt="Plaza Comercial Ventura">
+                    <div class="portfolio-overlay">
+                        <h3>Plaza Comercial Ventura</h3>
+                        <p>Santa Cruz • 2022 • Centro comercial premium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= TESTIMONIOS ============= -->
+    <section class="testimonials-section" id="testimonios">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <div class="section-label">Testimonios</div>
+                <h2 class="section-title">Lo que dicen <strong>nuestros clientes</strong></h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- 🔹 AGREGA TESTIMONIOS REALES DE TUS CLIENTES -->
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "La atención al detalle y el profesionalismo de Constructora Carmona 
+                        superaron todas nuestras expectativas. Nuestra residencia es una obra 
+                        de arte funcional."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AM</div>
+                        <div class="author-info">
+                            <h4>Andrea Morales</h4>
+                            <p>Propietaria, Residencia Alto Urus</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "Cumplimiento impecable de plazos y presupuesto. El equipo demostró 
+                        expertise técnico excepcional en cada fase del proyecto."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RC</div>
+                        <div class="author-info">
+                            <h4>Roberto Chávez</h4>
+                            <p>Director, Grupo Empresarial Ventura</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "Transformaron completamente nuestra visión en realidad. La calidad 
+                        de construcción es extraordinaria y el resultado final nos dejó sin palabras."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MV</div>
+                        <div class="author-info">
+                            <h4>María Vargas</h4>
+                            <p>Desarrolladora Inmobiliaria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= CERTIFICACIONES ============= -->
+    <section class="certifications-section">
+        <div class="certifications-container">
+            <div class="section-header">
+                <div class="section-label">Certificaciones</div>
+                <h2 class="section-title">Respaldo <strong>profesional</strong></h2>
+            </div>
+            
+            <div class="certifications-grid">
+                <!-- 🔹 AGREGA TUS CERTIFICACIONES REALES -->
+                <div class="certification-item">
+                    <div class="cert-icon">🏆</div>
+                    <div class="cert-name">ISO 9001:2015</div>
+                    <p class="cert-description">Sistema de Gestión de Calidad</p>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="cert-icon">🌱</div>
+                    <div class="cert-name">LEED AP</div>
+                    <p class="cert-description">Profesional Acreditado en Construcción Sostenible</p>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="cert-icon">⚡</div>
+                    <div class="cert-name">ISO 45001</div>
+                    <p class="cert-description">Seguridad y Salud Ocupacional</p>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="cert-icon">🛡️</div>
+                    <div class="cert-name">Cámara Boliviana de la Construcción</div>
+                    <p class="cert-description">Miembro Activo Categoría A</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= CONTACTO ============= -->
+    <section class="contact-section" id="contacto">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Conversemos sobre <strong>tu próximo proyecto</strong></h2>
+                
+                <p class="contact-description">
+                    Estamos listos para transformar tu visión en realidad. Nuestro equipo 
+                    de expertos está disponible para asesorarte en cada etapa del proceso.
+                </p>
+                
+                <div class="contact-details">
+                    <!-- 🔹 TELÉFONO - Cambia el número -->
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-item-content">
+                            <h3>Teléfono</h3>
+                            <p><a href="tel:+59172657394">+591 726 57394</a></p>
+                        </div>
+                    </div>
+                    
+                    <!-- 🔹 EMAIL - Cambia el correo -->
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-item-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:contacto@carmonaconstrucciones.com">contacto@carmonaconstrucciones.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <!-- 🔹 DIRECCIÓN - Cambia la ubicación -->
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-content">
+                            <h3>Oficinas</h3>
+                            <p>Av. Busch #1245, Edificio Empresarial Torre II, Piso 8<br>Santa Cruz de la Sierra, Bolivia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-item-content">
+                            <h3>Horario</h3>
+                            <p>Lunes a Viernes: 8:00 - 18:00<br>Sábados: 9:00 - 13:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <!-- 🔹 GOOGLE MAPS - Pega tu iframe de Google Maps aquí -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.869382956289!2d-63.18243708509262!3d-17.78382098760515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e7c7f6b8b8b7%3A0x1234567890abcdef!2sSanta%20Cruz%20de%20la%20Sierra!5e0!3m2!1ses!2sbo!4v1234567890123!5m2!1ses!2sbo" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============= FOOTER ============= -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Carmona Constructora</h3>
+                <p>
+                    Construyendo el futuro de Bolivia con excelencia, innovación y 
+                    compromiso desde 1985.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#servicios">Construcción Residencial</a></li>
+                    <li><a href="#servicios">Edificios Corporativos</a></li>
+                    <li><a href="#servicios">Remodelación</a></li>
+                    <li><a href="#servicios">Infraestructura Civil</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#nosotros">Quiénes Somos</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <!-- 🔹 AGREGA LINKS A TUS POLÍTICAS -->
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Certificaciones</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <!-- 🔹 NOMBRE DE LA EMPRESA -->
+            <p>© 2026 Constructora Carmona. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ============= BOTÓN WHATSAPP FLOTANTE ============= -->
+    <!-- 🔹 NÚMERO DE WHATSAPP - Cambia el número -->
+    <a href="https://wa.me/59172657394" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        💬
+    </a>
+
+    <!-- ============= JAVASCRIPT ============= -->
+    <script>
+        // Efecto de scroll en la navegación
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animación de elementos al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos con clase fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Aplicar clase fade-in a secciones principales
+        document.querySelectorAll('.service-card, .portfolio-card, .testimonial-card, .certification-item').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
